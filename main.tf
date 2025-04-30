@@ -1,23 +1,23 @@
 // Create static-site hosting bucket
-#checkov:skip=CKV_AWS_144: "No need to enable cross-region replication for now"
-#checkov:skip=CKV_AWS_18: "No need to enable access logging for now"
-#checkov:skip=CKV_AWS_145: "No need right now"
-#checkov:skip=CKV_AWS_21: "No need right now"
-#checkov:skip=CKV_AWS_19: "No need right now"
 resource "aws_s3_bucket" "bucket" {
   bucket_prefix = "${var.bucket_prefix}-"
   tags = {
     Name        = "hosting"
   }
+#checkov:skip=CKV_AWS_144: "No need to enable cross-region replication for now"
+#checkov:skip=CKV_AWS_18: "No need to enable access logging for now"
+#checkov:skip=CKV_AWS_145: "No need right now"
+#checkov:skip=CKV_AWS_21: "No need right now"
+#checkov:skip=CKV_AWS_19: "No need right now"
 }
 
 
 // allow public access
+resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
 #checkov:skip=CKV_AWS_53: "No need right now"
 #checkov:skip=CKV_AWS_54: "No need right now"
 #checkov:skip=CKV_AWS_55: "No need right now"
 #checkov:skip=CKV_AWS_56: "No need right now"
-resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
   bucket = aws_s3_bucket.bucket.id
 
   block_public_acls       = false
