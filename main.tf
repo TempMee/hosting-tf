@@ -116,7 +116,7 @@ locals {
 ##### CLOUD FRONT DISTRIBUTION #####
 resource "aws_cloudfront_distribution" "static_site_distribution" {
 #checkov:skip=CKV_AWS_68: "No need right now"
-#checkov:skip=CKV_AWS_32: "No need right now"
+#checkov:skip=CKV2_AWS_32: "No need right now"
 #checkov:skip=CKV_AWS_86: "No need right now"
   origin {
     domain_name = "${aws_s3_bucket.bucket.bucket}.s3-website-${var.aws_region}.amazonaws.com" // static site domain name
