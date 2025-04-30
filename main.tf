@@ -1,7 +1,6 @@
 // Create static-site hosting bucket
 resource "aws_s3_bucket" "bucket" {
-  bucket_prefix = "var.bucket_prefix-"
-
+  bucket_prefix = "${var.bucket_prefix}-"
   tags = {
     Name        = "hosting"
   }
