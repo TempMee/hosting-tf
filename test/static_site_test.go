@@ -29,7 +29,7 @@ func TestStaticWebsiteInfra(t *testing.T) {
 			"route53_zone_id": "Z05819972C5EK0GHLPRU1",
 			"bucket_prefix": "static-site",
 			"aws_region": awsRegion,
-			
+
 		},
 		NoColor: true,
 
@@ -70,5 +70,5 @@ func TestStaticWebsiteInfra(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 }

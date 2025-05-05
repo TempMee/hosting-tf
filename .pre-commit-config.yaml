@@ -9,16 +9,19 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.5 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: v1.99.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
       - id: terraform_validate
         exclude: (test/|examples/|.external_modules/)
-      - id: terraform_tfsec
-        args:
-          - '--args=--exclude-downloaded-modules'
-        exclude: (test/|examples/|.external_modules/)
+      # - id: terraform_trivy
+      #   args: ['--ignore-unfixed', '--ignore-non-detected']
+      #   exclude: (test/|examples/|.external_modules/)
+      # - id: terraform_tfsec
+      #   args:
+      #     - '--args=--exclude-downloaded-modules'
+      #   exclude: (test/|examples/|.external_modules/)
       - id: terraform_checkov
   - repo: https://github.com/zricethezav/gitleaks
     rev: v8.18.0

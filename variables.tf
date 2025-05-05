@@ -1,18 +1,18 @@
-variable "aws_access_key" {
-  description = "AWS access key"
-  type        = string
-}
+# variable "aws_access_key" {
+#   description = "AWS access key"
+#   type        = string
+# }
 
-variable "aws_secret_key" {
-  description = "AWS secret key"
-  type        = string
-}
+# variable "aws_secret_key" {
+#   description = "AWS secret key"
+#   type        = string
+# }
 
-variable "aws_token" {
-  description = "AWS token"
-  type        = string
-  default     = ""
-}
+# variable "aws_token" {
+#   description = "AWS token"
+#   type        = string
+#   default     = ""
+# }
 
 variable "aws_region" {
   description = "AWS region"
@@ -22,7 +22,7 @@ variable "aws_region" {
 
 variable "name" {
   description = "domain"
-  type = string  
+  type        = string
 }
 variable "subdomain" {
   description = "subdomain"
@@ -31,7 +31,7 @@ variable "subdomain" {
 
 variable "route53_zone_id" {
   description = " Hosted Zone ID for the domain"
-  type = string
+  type        = string
 }
 
 variable "bucket_prefix" {
