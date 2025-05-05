@@ -4,20 +4,20 @@ resource "aws_s3_bucket" "bucket" {
   tags = {
     Name        = "hosting"
   }
-#checkov:skip=CKV_AWS_144: "No need to enable cross-region replication for now"
-#checkov:skip=CKV_AWS_18: "No need to enable access logging for now"
-#checkov:skip=CKV_AWS_145: "No need right now"
-#checkov:skip=CKV_AWS_21: "No need right now"
+#checkov:skip=CKV_AWS_144: "No need to enable cross-region replication"
+#checkov:skip=CKV_AWS_18: "No need to enable access logging"
+#checkov:skip=CKV_AWS_145: "No need KMS right now"
+#checkov:skip=CKV_AWS_21: "No need to enable versioning"
 #checkov:skip=CKV_AWS_19: "No need right now"
-#checkov:skip=CKV2_AWS_6: "No need right now"
+#checkov:skip=CKV2_AWS_6: "allowing public access"
 }
 
 // allow public access
 resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
-#checkov:skip=CKV_AWS_53: "No need right now"
-#checkov:skip=CKV_AWS_54: "No need right now"
-#checkov:skip=CKV_AWS_55: "No need right now"
-#checkov:skip=CKV_AWS_56: "No need right now"
+#checkov:skip=CKV_AWS_53: "allowing public access"
+#checkov:skip=CKV_AWS_54: "allowing public access"
+#checkov:skip=CKV_AWS_55: "allowing public access"
+#checkov:skip=CKV_AWS_56: "allowing public access"
   bucket = aws_s3_bucket.bucket.id
 
   block_public_acls       = false
@@ -57,6 +57,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   ]
 }
 POLICY
+  depends_on = [ aws_s3_bucket_public_access_block.bucket_public_access ]
 }
 
 resource "aws_s3_object" "upload_object" {
