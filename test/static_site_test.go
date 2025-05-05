@@ -49,6 +49,9 @@ func TestStaticWebsiteInfra(t *testing.T) {
 	// S3 Bucket check
 	aws.AssertS3BucketExists(t, awsRegion, bucketID)
 
+	// Verify that our Bucket has a policy attached
+	aws.AssertS3BucketPolicyExists(t, awsRegion, bucketID)
+
 	// Domain name check
 	assert.Equal(t, domainName, terraform.Output(t, terraformOptions, "domain_name"))
 
