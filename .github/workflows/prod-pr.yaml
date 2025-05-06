@@ -4,6 +4,8 @@ on:
     branches:
       - staging
 
+permissions: read-all
+
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
