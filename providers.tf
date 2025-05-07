@@ -5,11 +5,4 @@ terraform {
       version = "~> 5.0"
     }
   }
-  backend "s3" {
-    bucket = "terraform-s3-bucket-oslsbfum"
-    region = "us-east-1"
-    key    = "kubernetes-tf/development/hosting.tfstate"
-  }
 }
-
-provider "aws" {}
