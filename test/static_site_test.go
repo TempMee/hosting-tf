@@ -16,15 +16,15 @@ func TestStaticWebsiteInfra(t *testing.T) {
 	t.Parallel()
 
 	awsRegion := "us-east-1" // ACM for CloudFront must be in us-east-1
-	name := "dev.tempdee.com"
+	domain := "dev.tempdee.com"
 	subDomain := "static"
-	domainName := subDomain + "." + name
+	fqdn := subDomain + "." + domain
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../",
 
 		Vars: map[string]interface{}{
-			"name": name,
+			"domain": domain,
 			"subdomain": subDomain,
 			"route53_zone_id": "Z05819972C5EK0GHLPRU1",
 			"bucket_prefix": "static-site",
@@ -53,7 +53,7 @@ func TestStaticWebsiteInfra(t *testing.T) {
 	aws.AssertS3BucketPolicyExists(t, awsRegion, bucketID)
 
 	// Domain name check
-	assert.Equal(t, domainName, terraform.Output(t, terraformOptions, "domain_name"))
+	assert.Equal(t, fqdn, terraform.Output(t, terraformOptions, "domain_name"))
 
 
 	// ACM Certificate validation (only checking existence)
@@ -65,7 +65,7 @@ func TestStaticWebsiteInfra(t *testing.T) {
 
 	// Optional: test Route 53 resolution (might need to wait for propagation)
 	time.Sleep(300 * time.Second) // give DNS time to propagate if needed
-	publicIP, err := net.LookupIP(domainName)
+	publicIP, err := net.LookupIP(fqdn)
 	assert.NotEmpty(t, publicIP)
 	if err != nil {
 		log.Fatal(err)
