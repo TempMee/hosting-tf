@@ -6,12 +6,13 @@ locals {
 ##### SSL CERTIFICATE #####
 
 locals {
-  domain = "${var.subdomain}.${var.name}"
+  # fqdn = "${var.subdomain}.${var.domain}"
+  fqdn = var.subdomain != "" ? "${var.subdomain}.${var.domain}" : var.domain
 }
 
 // Create SSL certificate
 resource "aws_acm_certificate" "ssl_cert" {
-  domain_name       = local.domain
+  domain_name       = local.fqdn
   validation_method = "DNS"
 
   tags = {

@@ -29,10 +29,10 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
   }
 
   enabled             = true
-  comment             = local.domain
+  comment             = local.fqdn
   default_root_object = "index.html"
 
-  aliases = [local.domain]
+  aliases = [local.fqdn]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
