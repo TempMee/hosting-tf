@@ -6,7 +6,6 @@ locals {
 ##### SSL CERTIFICATE #####
 
 locals {
-  # fqdn = "${var.subdomain}.${var.domain}"
   fqdn = var.subdomain != "" ? "${var.subdomain}.${var.domain}" : var.domain
 }
 
