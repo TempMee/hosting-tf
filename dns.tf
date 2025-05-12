@@ -20,7 +20,7 @@ resource "aws_route53_record" "ssl_cert_validation_records" {
 ######## ROUTE 53 RECORD #######
 resource "aws_route53_record" "hosting_page_A_record" {
   zone_id = var.route53_zone_id
-  name    = local.domain
+  name    = local.fqdn
   type    = "A"
 
   alias {

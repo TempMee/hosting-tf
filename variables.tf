@@ -4,13 +4,15 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "name" {
+variable "domain" {
   description = "domain"
   type        = string
 }
+
 variable "subdomain" {
   description = "subdomain"
   type        = string
+  default     = ""
 }
 
 variable "route53_zone_id" {
