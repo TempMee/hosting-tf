@@ -29,4 +29,5 @@ variable "bucket_prefix" {
 variable "environment" {
   description = "Environment name"
   type        = string
+  default     = "development"
 }
