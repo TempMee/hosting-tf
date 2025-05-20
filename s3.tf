@@ -2,7 +2,9 @@
 resource "aws_s3_bucket" "bucket" {
   bucket_prefix = "${var.bucket_prefix}-"
   tags = {
-    Name = "hosting"
+    Name        = "hosting"
+    Environment = var.environment
+    Terraform   = "true"
   }
   #checkov:skip=CKV_AWS_144: "No need to enable cross-region replication"
   #checkov:skip=CKV_AWS_18: "No need to enable access logging"
