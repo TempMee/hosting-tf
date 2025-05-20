@@ -63,7 +63,9 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
   }
 
   tags = {
-    Name = "hosting"
+    Name        = "hosting"
+    Environment = var.environment
+    Terraform   = "true"
   }
 
   // The viewer_certificate is for ssl certificate settings configured via the AWS Console.
