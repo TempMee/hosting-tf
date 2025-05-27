@@ -15,7 +15,9 @@ resource "aws_acm_certificate" "ssl_cert" {
   validation_method = "DNS"
 
   tags = {
-    Name = "hosting"
+    Name        = "hosting"
+    Environment = var.environment
+    Terraform   = "true"
   }
 
   lifecycle {

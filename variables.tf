@@ -25,3 +25,9 @@ variable "bucket_prefix" {
   type        = string
   default     = "static-site"
 }
+
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "development"
+}
