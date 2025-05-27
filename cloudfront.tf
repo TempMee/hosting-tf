@@ -63,7 +63,7 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
   }
 
   tags = {
-    Name        = "hosting"
+    Name        = var.bucket_prefix
     Environment = var.environment
     Terraform   = "true"
   }

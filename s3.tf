@@ -2,7 +2,7 @@
 resource "aws_s3_bucket" "bucket" {
   bucket_prefix = "${var.bucket_prefix}-"
   tags = {
-    Name        = "hosting"
+    Name        = var.bucket_prefix
     Environment = var.environment
     Terraform   = "true"
   }
