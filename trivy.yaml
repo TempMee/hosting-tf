@@ -1,0 +1,29 @@
+skip-dirs:
+  - "**/.terraform/**"
+  - "**/.external_modules/**"
+  - "**/examples/**"
+  - test
+timeout: 10m
+format: table
+exit-code: 1
+dependency-tree: true
+list-all-pkgs: true
+severity:
+  - HIGH
+  - CRITICAL
+scan:
+  scanners:
+    - vuln
+    - secret
+    - config
+vulnerability:
+  type:
+    - os
+    - library
+  ignore-unfixed: true
+
+terraform:
+  tfvars:
+    - envs/development.tfvars
+    - envs/production.tfvars
+    - envs/staging.tfvars
